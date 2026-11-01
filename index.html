@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sussy Collections Luxury Wears</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h2>Sussy Collections</h2>
+    <button class="cart-btn" onclick="toggleCart()">🛒 <span id="count">0</span></button>
+  </header>
+
+  <section class="hero">
+    <h1>Luxury Wears for Men and Women</h1>
+    <p>Based in Kogi State. Delivery nationwide.</p>
+  </section>
+
+  <div class="filters">
+    <button onclick="setFilter('All')">All</button>
+    <button onclick="setFilter('Men')">Men</button>
+    <button onclick="setFilter('Women')">Women</button>
+    <button onclick="setFilter('Shoes')">Shoes</button>
+    <button onclick="setFilter('Bags')">Bags</button>
+  </div>
+
+  <div id="products" class="products"></div>
+
+  <div id="cart" class="cart hidden">
+    <h2>Your Order</h2>
+    <div id="items"></div>
+    <h3>Total: <span id="total">₦0</span></h3>
+    <input id="cname" placeholder="Your name">
+    <input id="cphone" placeholder="Your phone number">
+    <input id="caddr" placeholder="Delivery address (city and state)">
+    <button class="order-btn" onclick="sendOrder()">Order on WhatsApp</button>
+    <button class="close-btn" onclick="toggleCart()">Close</button>
+  </div>
+
+  <footer>Don't buy if you're not convinced. © 2026 Sussy Collections</footer>
+  <script src="script.js"></script>
+</body>
+</html>

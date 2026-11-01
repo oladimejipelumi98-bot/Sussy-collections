@@ -1,0 +1,87 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: #f6f3fa; color: #222; }
+
+header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px; background: #4b1a8c; color: #fff;
+  position: sticky; top: 0; z-index: 5;
+}
+.cart-btn { background: #fff; border: none; padding: 8px 14px; border-radius: 20px; font-size: 16px; }
+
+/* Hero with moving gradient */
+.hero {
+  text-align: center; padding: 40px 20px; color: #fff;
+  background: linear-gradient(135deg, #6a2cc0, #3a0f70, #6a2cc0);
+  background-size: 200% 200%;
+  animation: gradientMove 8s ease infinite;
+}
+.hero h1 { font-size: 24px; margin-bottom: 8px; animation: fadeUp 0.8s ease both; }
+.hero p { animation: fadeUp 0.8s ease 0.25s both; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.filters { display: flex; gap: 8px; overflow-x: auto; padding: 14px; }
+.filters button { padding: 8px 16px; border: 1px solid #4b1a8c; background: #fff; color: #4b1a8c; border-radius: 20px; white-space: nowrap; }
+
+.products { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 14px 30px; }
+.product { background: #fff; border-radius: 12px; padding: 10px; text-align: center; overflow: hidden; }
+.product img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; background: #e6dcf5; transition: transform 0.4s ease; }
+.product:hover img { transform: scale(1.05); }
+.product h3 { font-size: 14px; margin: 8px 0 4px; }
+.product p { color: #4b1a8c; font-weight: bold; margin-bottom: 8px; }
+.product button { width: 100%; padding: 9px; border: none; background: #4b1a8c; color: #fff; border-radius: 8px; }
+
+/* Products appear as you scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.show { opacity: 1; transform: none; }
+
+/* Buttons */
+button { transition: transform 0.15s ease, background 0.2s ease; }
+button:active { transform: scale(0.94); }
+
+/* Cart badge bounce */
+.bump { display: inline-block; animation: bump 0.4s ease; }
+@keyframes bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+/* Cart */
+.cart { position: fixed; inset: 0; background: #fff; padding: 20px; overflow-y: auto; z-index: 10; }
+.hidden { display: none; }
+.cart:not(.hidden) { animation: slideUp 0.35s ease; }
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; }
+.item button { width: 28px; height: 28px; border: none; background: #e6dcf5; border-radius: 50%; margin: 0 4px; }
+.cart input { width: 100%; padding: 12px; margin-top: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 15px; }
+.order-btn { width: 100%; padding: 14px; margin-top: 16px; border: none; background: #25d366; color: #fff; font-size: 16px; border-radius: 8px; animation: pulse 2s infinite; }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+.close-btn { width: 100%; padding: 12px; margin-top: 10px; border: 1px solid #999; background: #fff; border-radius: 8px; }
+
+footer { text-align: center; padding: 20px; background: #3a0f70; color: #fff; font-size: 13px; }
+
+/* Respect people who turn motion off */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
