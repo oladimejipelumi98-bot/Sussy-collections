@@ -7,15 +7,63 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <div id="splash">
+    <div class="bubble">Hi! Welcome to Sussy Collections 👋</div>
+    <div class="mascot">
+      <svg viewBox="0 0 140 160" class="mascot-svg">
+        <ellipse cx="70" cy="153" rx="34" ry="6" fill="rgba(0,0,0,0.25)"/>
+        <path d="M50 52 C50 14 90 14 90 52" fill="none" stroke="#ffb703" stroke-width="7" stroke-linecap="round"/>
+        <rect x="28" y="48" width="84" height="94" rx="14" fill="#ffffff"/>
+        <rect x="28" y="48" width="84" height="24" rx="12" fill="#ffb703"/>
+        <text x="70" y="66" font-size="15" font-weight="bold" text-anchor="middle" fill="#3a0f70">SC</text>
+        <ellipse class="eye" cx="55" cy="94" rx="6" ry="8" fill="#3a0f70"/>
+        <ellipse class="eye" cx="85" cy="94" rx="6" ry="8" fill="#3a0f70"/>
+        <circle cx="45" cy="110" r="6" fill="#ff9ec7" opacity="0.7"/>
+        <circle cx="95" cy="110" r="6" fill="#ff9ec7" opacity="0.7"/>
+        <path d="M58 110 Q70 124 82 110" fill="none" stroke="#3a0f70" stroke-width="4" stroke-linecap="round"/>
+        <path d="M28 104 Q12 114 14 128" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+        <g class="wave">
+          <path d="M112 104 Q128 94 130 70" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="130" cy="64" r="9" fill="#ffffff"/>
+        </g>
+        <ellipse cx="52" cy="146" rx="10" ry="5" fill="#3a0f70"/>
+        <ellipse cx="88" cy="146" rx="10" ry="5" fill="#3a0f70"/>
+      </svg>
+    </div>
+    <h1 id="splashTitle">Sussy Collections</h1>
+    <p>Luxury wears for men and women</p>
+    <button class="start-btn" onclick="closeSplash()">Start Shopping 🛍️</button>
+  </div>
+
   <header>
-    <h2>Sussy Collections</h2>
-    <button class="cart-btn" onclick="toggleCart()">🛒 <span id="count">0</span></button>
+    <h2 id="logo">Sussy Collections</h2>
+    <button class="cart-btn" id="cartBtn" onclick="toggleCart()">🛒 <span id="count">0</span></button>
   </header>
 
   <section class="hero">
+    <span class="float f1">👗</span>
+    <span class="float f2">👟</span>
+    <span class="float f3">👜</span>
+    <span class="float f4">👕</span>
+    <span class="float f5">✨</span>
+    <span class="float f6">👖</span>
     <h1>Luxury Wears for Men and Women</h1>
     <p>Based in Kogi State. Delivery nationwide.</p>
   </section>
+
+  <div class="marquee">
+    <div class="track">
+      <span>🚚 Nationwide Delivery</span>
+      <span>✨ Premium Quality</span>
+      <span>🛍️ Order on WhatsApp</span>
+      <span>💯 Don't buy if you're not convinced</span>
+      <span>🚚 Nationwide Delivery</span>
+      <span>✨ Premium Quality</span>
+      <span>🛍️ Order on WhatsApp</span>
+      <span>💯 Don't buy if you're not convinced</span>
+    </div>
+  </div>
 
   <div class="filters">
     <button onclick="setFilter('All')">All</button>

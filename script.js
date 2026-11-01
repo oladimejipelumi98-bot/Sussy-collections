@@ -1,7 +1,6 @@
 const PHONE = "2349160309344";
 
-
-  const products = [
+const products = [
   { id: 1, name: "Premium Track Suit (Red)", price: 33000, cat: "Men", img: "suit-red.jpg" },
   { id: 2, name: "Premium Track Suit (White)", price: 33000, cat: "Men", img: "suit-white.jpg" },
   { id: 3, name: "260gsm Plain Tee (Black)", price: 9000, cat: "Men", img: "tee-black.jpg" },
@@ -18,6 +17,28 @@ let filter = "All";
 
 function money(n) { return "₦" + n.toLocaleString(); }
 
+/* ---------- Bouncing letters ---------- */
+function splitLetters(el) {
+  const text = el.textContent;
+  el.textContent = "";
+  text.split("").forEach(function (ch, i) {
+    const s = document.createElement("span");
+    s.className = "letter";
+    s.style.setProperty("--d", (i * 0.07) + "s");
+    s.textContent = ch === " " ? "\u00A0" : ch;
+    el.appendChild(s);
+  });
+}
+
+/* ---------- Welcome screen ---------- */
+function closeSplash() {
+  const s = document.getElementById("splash");
+  if (!s || s.classList.contains("leave")) return;
+  s.classList.add("leave");
+  setTimeout(function () { s.style.display = "none"; }, 700);
+}
+
+/* ---------- Products ---------- */
 function setFilter(f) { filter = f; renderProducts(); }
 
 const observer = new IntersectionObserver(function (entries) {
@@ -40,7 +61,7 @@ function renderProducts() {
       d.innerHTML =
         '<img src="' + p.img + '" alt="' + p.name + '">' +
         "<h3>" + p.name + "</h3><p>" + money(p.price) + "</p>" +
-        '<button onclick="addToCart(' + p.id + ')">Add to cart</button>';
+        '<button onclick="addToCart(' + p.id + ', this)">Add to cart</button>';
       d.classList.add("reveal");
       d.style.transitionDelay = (i % 2) * 0.12 + "s";
       box.appendChild(d);
@@ -48,13 +69,29 @@ function renderProducts() {
     });
 }
 
-function addToCart(id) {
+/* ---------- Cart ---------- */
+function addToCart(id, btn) {
   cart[id] = (cart[id] || 0) + 1;
   renderCart();
+
   const badge = document.getElementById("count");
   badge.classList.remove("bump");
   void badge.offsetWidth;
   badge.classList.add("bump");
+
+  const cb = document.getElementById("cartBtn");
+  cb.classList.remove("shake");
+  void cb.offsetWidth;
+  cb.classList.add("shake");
+
+  if (btn) {
+    btn.textContent = "Added ✓";
+    btn.classList.add("added");
+    setTimeout(function () {
+      btn.textContent = "Add to cart";
+      btn.classList.remove("added");
+    }, 900);
+  }
 }
 
 function changeQty(id, step) {
@@ -107,5 +144,9 @@ function sendOrder() {
   window.open("https://wa.me/" + PHONE + "?text=" + encodeURIComponent(msg), "_blank");
 }
 
+/* ---------- Start ---------- */
+splitLetters(document.getElementById("splashTitle"));
+splitLetters(document.getElementById("logo"));
 renderProducts();
 renderCart();
+setTimeout(closeSplash, 5000);
